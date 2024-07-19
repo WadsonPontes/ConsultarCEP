@@ -16,3 +16,9 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/search/local/{ceps}', 'CepController@search');
+
+$router->get('{any:.*}', function () {
+    return response()->json(['error' => 'Página não encontrada.'], 404);
+});
